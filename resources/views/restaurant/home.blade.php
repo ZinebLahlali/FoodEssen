@@ -21,6 +21,37 @@
                     </div>
                     <span class="text-2xl font-bold tracking-tight">Fine<span class="text-rose-600">Dine</span></span>
                 </div>
+        <nav class="flex items-center gap-6 text-sm font-semibold">
+
+                <a href="{{ route('home') }}"
+                class="text-slate-600 hover:text-rose-600 transition">
+                    🏠 Home
+                </a>
+
+                
+                    <a href="{{ route('viewFavorites') }}"
+                    class="relative text-slate-600 hover:text-rose-600 transition">❤️ Mes favoris</a>
+
+                    <a href=""
+                    class="text-slate-600 hover:text-rose-600 transition">
+                        👤 Mon profil
+                    </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="text-slate-400 hover:text-red-600 transition">
+                            🚪
+                        </button>
+                    </form>
+            
+                    <a href="{{ route('login') }}"
+                    class="text-slate-600 hover:text-rose-600 transition">
+                        Connexion
+                    </a>
+                
+
+         </nav>
+
 
                 <form method="GET" action="{{ route('home') }}" class="flex flex-wrap md:flex-nowrap items-center bg-white border border-slate-200 shadow-sm rounded-2xl p-1.5 w-full max-w-2xl">
                     <div class="flex-1 px-4 py-2 border-r border-slate-100">

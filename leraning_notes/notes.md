@@ -38,6 +38,11 @@ Par exemple, dans le modèle User, on définit une méthode qui établit la rela
  belongsToMany()**
 
 
+ Quelle méthode pour ajouter/supprimer d'une relation ?
+  il ya plusieur méthodes
+  ![alt text](image-2.png);
+
+
 
 
 

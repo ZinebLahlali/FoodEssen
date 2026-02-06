@@ -41,7 +41,9 @@ Route::middleware('auth')->group(function(){
     Route::delete('/home/{restaurant}/favorite', [restauController::class, 'unfavoriteRestau'])->name('restaurant.unfavorite');
 });
 
-
+Route::get('/viewFavorites', [restauController::class, 'listFavorites'])
+->middleware('auth')
+->name('viewFavorites');
 
 
 

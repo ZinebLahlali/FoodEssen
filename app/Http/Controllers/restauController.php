@@ -160,16 +160,26 @@ class restauController extends Controller
    
     public function favoriteRestau($restaurant)
     {
-        $user= auth()->user();
-
+        $user= Auth::user();
+        $this->toggleFavorite($restaurant->id);
         users_favorites::create([
-            'restaurant_id' => $restaurant,
+            'restaurant_id' => $restaurant->id,
             'user_id' => $user->id,
             'statut' => true,
         ]);
 
        return back();
     }
+
+   public function toggleFavorite($restaurant_id)
+   { 
+    if(Auth::user()->role != 'client'){
+       return back()->with('error', 'Clients seulement');
+   }
+    
+
+   }
+    
 
     public function unfavoriteRestau(Restaurant $restaurant)
     {
@@ -180,7 +190,13 @@ class restauController extends Controller
         return back();
     }
 
-
+    public function listFavorites()
+    {
+         $restaurants = Restaurant::whereHas('favoritedByUsers', function($query){
+               $query->where('user_id', Auth::user()->id);    
+         })->with('favoritedByUsers')->get();
+         return view('restaurant.viewFavorites' , compact('restaurants'));
+    }
 
 }
 
